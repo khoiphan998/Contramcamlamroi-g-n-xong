@@ -1,0 +1,281 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins',sans-serif;
+            text-decoration: none;
+        }
+
+        .div-footer {
+            text-align: center;
+            bottom: 0;
+            left: 0;
+            padding-top: 15px;
+            height: 50px;
+            width: 100%;
+            background-color: lightslategray;
+            color: white;
+        }
+
+        body {
+            background: #fff;
+            min-height: 200vh;
+            padding-top: 0;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.2s;
+            padding: 40px 100px;
+            z-index: 100000;
+        }
+        
+            header.sticky {
+                padding: 5px 100px;
+                background: white;
+                height: 80px;
+            }
+
+                header.sticky ul li a {
+                    color: limegreen;
+                    font-size: 18px;
+                    text-decoration: none;
+                }
+
+            header .logo {
+                position: relative;
+                text-transform: uppercase;
+                
+                transition: 0.2s;
+            }
+
+
+
+            header ul {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+                header ul li {
+                    position: relative;
+                    list-style: none;
+                    text-decoration: none;
+                }
+
+                    header ul li a {
+                        position: relative;
+                        list-style: none;
+                        color: white;
+                        
+                        font-weight: 700;
+                        transition: 0.2s;
+                        padding: 0 15px;
+                        font-size: 25px;
+                    }
+
+                        header ul li a:hover {
+                            text-decoration: none;
+                            color: limegreen;
+                        }
+
+        .banner video {
+            position: relative;
+            width: 100%;
+            height: auto;
+            background-size: cover;
+            filter: brightness(50%);
+            
+        }
+        body {
+            transition: 0.8s;
+        }
+        .search-box {
+            width: fit-content;
+            height: fit-content;
+            position: relative;
+        }
+
+        .input-search {
+            height: 50px;
+            width: 50px;
+            border-style: none;
+            padding: 10px;
+            font-size: 18px;
+            letter-spacing: 2px;
+            outline: none;
+            border-radius: 25px;
+            transition: all .5s ease-in-out;
+            background-color: greenyellow;
+            padding-right: 40px;
+            color: gray;
+        }
+
+            .input-search::placeholder {
+                color: gray);
+                font-size: 18px;
+                letter-spacing: 2px;
+                font-weight: 100;
+            }
+
+        .btn-search {
+            width: 50px;
+            height: 50px;
+            border-style: none;
+            font-size: 20px;
+            font-weight: bold;
+            outline: none;
+            cursor: pointer;
+            border-radius: 50%;
+            position: absolute;
+            right: 0px;
+            color: white;
+            background-color: transparent;
+            pointer-events: painted;
+        }
+
+            .btn-search:focus ~ .input-search {
+                width: 300px;
+                border-radius: 0px;
+                background-color: transparent;
+                border-bottom: 1px solid gray;
+                transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+                color: gray;
+            }
+
+        .input-search:focus {
+            width: 300px;
+            border-radius: 0px;
+            background-color: transparent;
+            border-bottom: 1px solid gray;
+            transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+
+
+        <a href="@Url.Action("Index", "Home")"><img width="100" height="100" src="https://organicstore.vn/wp-content/uploads/2021/12/logo.png" class="header_logo header-logo" alt="Organic Store"></a>
+
+
+        <ul>
+            <li class="format-home">
+
+                <a href="@Url.Action("Index", "Home")">Trang Chủ</a>
+
+            </li>
+            <li><a href="@Url.Action("Index_Product", "Product")">Sản Phẩm</a></li>
+
+            <li class="format-loginadmin">
+                @if (Session["RoleUser"] == null)
+                {
+                    <a href="@Url.Action("LoginAdmin", "Admin")"><span class="product-nav"></span>Kênh Người Bán</a>}
+                else
+                {
+                    <a href="@Url.Action("index_admin", "product")"><span class="product-nav"></span>Kênh Người Bán</a>}
+
+            </li>
+            <li><a href="@Url.Action("Contact", "Home")">Liên Hệ</a></li>
+        </ul>
+
+        <ul class="navbar-right">
+
+            <li class="format-signup">
+                @if (Session["NameUser"] == null)
+                {<a href="/LoginUser/RegisterUser"><span class="glyphicon glyphicon-user"></span>  Đăng Kí</a>}
+                else
+                {
+                    <span></span>
+                }
+            </li>
+
+            <li class="format-login">
+                @if (Session["NameUser"] == null)
+                {
+                    <a href="/LoginUser/Index"><span class="glyphicon glyphicon-user"></span>  Đăng Nhập</a>
+                }
+                else
+                {
+                    <span></span>
+                }
+            </li>
+            <li class="nav navbar-right">
+                @if (Session["NameUser"] == null)
+                {
+                    <span></span>
+                }
+                else
+                {
+                    <a href="@Url.Action("LogOutUser","LoginUser")"> Đăng xuất</a>
+
+                }
+            </li>
+            
+
+        </ul>
+
+        <div class="search-box">
+            
+            @using (Html.BeginForm("Search", "Product"))
+            {
+
+            <input type="button"class="btn-search fa fa-search" style="font-family:Arial,sans-serif" value="Tìm">
+                <input type="text" class="input-search" placeholder="Nhập sản phẩm"/>
+
+
+
+            }
+        </div>
+        </header>
+
+
+
+
+    <section class="banner w3-animate-top">
+        <video width="1920" height="1080" autoplay muted >
+            <source src="~/Content/images/banner.mp4" type="video/mp4">
+            <source src="~/Content/images/Midwest Whole Foods Market Commercial_ Food From A Happy Place _ Store Opening _ Whole Foods Market.mp4" type="video/mp4">
+        </video>
+        <div class="w3-display-middle">
+            <h1 class="w3-jumbo w3-animate-top" style="color:white;">CỬA HÀNG NÔNG SẢN SẠCH</h1>
+            <hr class="w3-border-white w3-animate-left" style="margin:auto;width:40%">
+            <a href="@Url.Action("Index_Product", "Product")" class="w3-large w3-center w3-btn w3-text-light-green fa fa-shopping-cart" style="margin-left:37%; margin-top:2%;border:1px solid white;background-color:white;opacity:0.9;text-decoration:none;font-weight:600"> GHÉ THĂM CỬA HÀNG!</a>
+        </div>
+
+    </section>
+    @RenderBody()
+    <script type="text/javascript">
+        window.addEventListener("scroll", function () {
+            var header = this.document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+
+    </script>
+    <div class="div-footer">
+        <p>&copy; @DateTime.Now.Year - Phan Trần Anh Khôi - 21DH113276 - Nhóm 16</p>
+    </div>
+</body>
+</html>

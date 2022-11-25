@@ -1,0 +1,41 @@
+﻿@using Contramcamlamroi.Models
+@model List<Category>
+<style>
+    .vertical-menu {
+        width: 300px; /* Set a width if you like */
+    }
+
+        .vertical-menu a {
+            background-color: #eee; /* Grey background color */
+            color: black; /* Black text color */
+            display: block; /* Make the links appear below each other */
+            padding: 12px; /* Add some padding */
+            text-decoration: none; /* Remove underline from links */
+            border: 1px solid lightgray;
+        }
+
+            .vertical-menu a:hover {
+                
+                background-color: #ccc; /* Dark grey background on mouse-over */
+            }
+
+            .vertical-menu a.active {
+                background-color: limegreen; /* Add a green color to the "active/current" link */
+                color: white;
+                
+                font-size:20px;
+                font-weight:600;
+            }
+</style>
+
+<div class="vertical-menu">
+    <a href="@Url.Action("Index_product","Product")" class="active">Tất cả loại sản phẩm</a>
+    @{ foreach (var item in Model)
+                    {
+        <li class="div-cate" style="list-style:none;">
+            @Html.ActionLink(item.NameCate, "Index_product", "Product", new { category = item.IDCate.Trim() }, "")
+        </li> } }
+    </a>
+
+</div>
+

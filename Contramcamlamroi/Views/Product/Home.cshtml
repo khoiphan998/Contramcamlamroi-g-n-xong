@@ -1,0 +1,11 @@
+﻿@model Contramcamlamroi.Models.Product
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{Html.RenderAction("GroupByTop5", "OrderDetail");}
+
+@{Html.RenderAction("Index", "Product");}
+

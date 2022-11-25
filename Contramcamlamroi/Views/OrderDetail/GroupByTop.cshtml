@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Contramcamlamroi.Models.ViewModel>
+@{ 
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Danh Sách Sản Phẩm Bán Chạy Nhất</h2>
+<div class="row">
+    @foreach (var i in Model)
+    {
+        <div class="col-sm-12 col-sm-6 col-md-4 col-lg-3" style="border-width:thick;">
+            <div class="card-pro">
+
+                <div class="product-iamge" style="text-align:center;"><img src="@Url.Content(i.ImgPro)" height="200" width="200" /></div>
+                <p style="text-align:center;">@Html.DisplayFor(model => i.NamePro)</p>
+                <p style="text-align:center;">@Html.DisplayFor(model => i.pricePro)</p>
+
+                <a href="/ShoppingCart/AddToCart/@i.IDPro" class="btn btn-default"> Buy </a>
+            </div>
+
+        </div>}
+</div>
+

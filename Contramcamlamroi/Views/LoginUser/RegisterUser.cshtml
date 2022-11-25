@@ -1,0 +1,90 @@
+﻿@model Contramcamlamroi.Models.AdminUser
+
+@{ ViewBag.Title = "RegisterUser";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml"; }
+
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+
+    .login-text h2 {
+        font-size: 40px;
+    }
+
+    input#ID {
+        padding: 1px 2px;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+
+    input#PasswordUser {
+        padding: 1px 2px;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+
+    input#ConfirmPass {
+        padding: 1px 2px;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+
+    hr {
+        margin-top: 0;
+        margin-bottom: 5px;
+        border: 0;
+        border-top: 1px solid #eeeeee;
+    }
+</style>
+<div style="margin-top:10%;margin-left:40%; border-radius: 15px; border: 2px solid #73AD21; width: 30%;height:auto; ">
+    <div class="login-text">
+        <h2>Đăng Kí Người Mua</h2>
+    </div>
+    <div style="margin-left: 15%;">
+        @using (Html.BeginForm("RegisterUser", "LoginUser", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+    @Html.AntiForgeryToken()
+        <table>
+            <tr>
+                <td> @Html.LabelFor(model => model.ID)</td>
+                <td> @Html.EditorFor(model => model.ID)</td>
+                <td> @Html.ValidationMessageFor(model => model.ID) </td>
+
+            </tr>
+
+            @if (ViewBag.ErrorRegister != null)
+            {
+        @ViewBag.ErrorRegister}
+
+            <tr>
+                <td>@Html.LabelFor(model => model.NameUser)</td>
+                <td>@Html.EditorFor(model => model.NameUser)</td>
+                <td>@Html.ValidationMessageFor(model => model.NameUser)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.RoleUser)</td>
+                <td>@Html.EditorFor(model => model.RoleUser)</td>
+                <td>@Html.ValidationMessageFor(model => model.RoleUser)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.PasswordUser)</td>
+                <td>@Html.PasswordFor(model => model.PasswordUser)</td>
+                <td>@Html.ValidationMessageFor(model => model.PasswordUser)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.ConfirmPass)</td>
+                <td>@Html.PasswordFor(model => model.ConfirmPass)</td>
+                <td>@Html.ValidationMessageFor(model => model.ConfirmPass)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Đăng Kí" class="btn btn-success" />
+                    <a href="@Url.Action("Index", "LoginUser")"> <hr /> Bạn chưa có tài khoản? </a>
+                </td>
+            </tr>
+            
+        </table> }</div>
+                            </div>

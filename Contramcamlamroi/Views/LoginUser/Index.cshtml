@@ -1,0 +1,58 @@
+﻿@model Contramcamlamroi.Models.AdminUser
+
+@{ ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_LayoutPage1.cshtml"; }
+<style>
+    .login-text h2 {
+        font-size: 50px;
+    }
+
+    .field-validation-error {
+        color: red;
+    }
+</style>
+
+<div style="margin-top:10%;margin-left:40%; border-radius: 15px; border: 2px solid #73AD21; width: 30%;height:300px; ">
+    <div class="login-text">
+        <h2>Đăng Nhập Người Mua</h2>
+    </div>
+    <div style="margin-left: 20%;">
+        @using (Html.BeginForm("LoginAcount", "LoginUser", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+@Html.AntiForgeryToken()
+                <table>
+                    <tr>
+                        <td>Tên Đăng Nhập</td>
+                        <td>@Html.TextBoxFor(model => model.NameUser, new { style = "field-validation-error" })</td>
+                        <td>@Html.ValidationMessageFor(model => model.NameUser)</td>
+                    </tr>
+                    <tr> </tr>
+                    <tr>
+                        <td>Nhập Mật Khẩu</td>
+                        <td>
+                            <input class="text-box single-line" data-val="true" data-val-required="
+                                   Mật khẩu không được trống!"
+                                   id="PasswordUser" name="PasswordUser" type="password" value="" 
+                                   style="padding: 1px 2px; margin-top: 10px; border-radius: 5px;">
+                        </td>
+                        <td>@Html.ValidationMessageFor(model => model.PasswordUser)</td>
+                        @if (ViewBag.ErrorInfo == null)
+                        {
+                        <p>@ViewBag.ErrorInfo</p>
+}
+                    </tr>
+
+                    <tr>
+
+
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Đăng nhập" class="btn btn-success" />
+                            <a href="@Url.Action("RegisterUser", "LoginUser")"> <hr /> Bạn chưa có tài khoản? </a>
+                        </td>
+
+                    </tr>
+
+                </table>}
+    </div>
+</div>

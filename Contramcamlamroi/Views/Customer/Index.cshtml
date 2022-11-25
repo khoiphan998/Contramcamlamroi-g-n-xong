@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Contramcamlamroi.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/ViewPage1.cshtml";
+}
+
+<h1 style="padding:10px">KHÁCH HÀNG </h1>
+
+<p  style="padding:10px; font-size:20px">
+    @Html.ActionLink("Thêm Khách Hàng Mới ", "Create", "Customer")
+</p>
+<table class="table table-bordered" style="border-width: thick;  margin-left: 10px; margin-right: 10px; font-size:17px">
+    <tr>
+        <th> Mã Khách Hàng </th>
+        <th> Tên Khách Hàng</th>
+        <th> Số Điện Thoại </th>
+        <th> Email </th>
+       
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td> @Html.DisplayFor(modelItem => item.IDCus) </td>
+    <td> @Html.DisplayFor(modelItem => item.NameCus) </td>
+    <td> @Html.DisplayFor(modelItem => item.PhoneCus) </td>
+    <td> @Html.DisplayFor(modelItem => item.EmailCus) </td>
+
+    <td>
+        @Html.ActionLink("Sửa", "Edit", "Customer") |
+        @Html.ActionLink("Chi tiết", "Details", "Customer") |
+        @Html.ActionLink("Xóa", "Delete", "Customer")|
+    </td>
+</tr>
+    }
+</table>

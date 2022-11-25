@@ -1,0 +1,59 @@
+﻿@model Contramcamlamroi.Models.AdminUser
+
+@{
+    ViewBag.Title = "RegisterUser";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+
+    .login-text h2 {
+        font-size: 40px;
+    }
+</style>
+<div style="margin-top: 10%; margin-left: 40%; border-radius: 15px; border: 2px solid #73AD21; width: 30%; height: auto; font-size: 20px;">
+    <div class="login-text">
+        <h2>Đăng Kí Cho Người Bán</h2>
+    </div>
+
+    @using (Html.BeginForm("RegisterAdmin", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <p>Nhập ID</p>
+        <p>@Html.EditorFor(model => model.ID)</p>
+        <p>
+            @Html.ValidationMessageFor(model => model.ID)
+
+        </p>
+        if (ViewBag.ErrorRegister != null)
+        {
+            <p>@ViewBag.ErrorRegister</p>
+
+        }
+        <p>Tên Tài Khoản</p>
+        <p>@Html.EditorFor(model => model.NameUser)</p>
+        <p>@Html.ValidationMessageFor(model => model.NameUser)</p>
+
+        <p>Vị Trí</p>
+        <p>@Html.EditorFor(model => model.RoleUser)</p>
+        <p>@Html.ValidationMessageFor(model => model.RoleUser)</p>
+
+        <p>Nhập Mật Khẩu</p>
+        <p>@Html.PasswordFor(model => model.PasswordUser)</p>
+        <p>@Html.ValidationMessageFor(model => model.PasswordUser)</p>
+
+        <p>Nhập Lại Mật Khẩu</p>
+        <p>@Html.PasswordFor(model => model.ConfirmPass)</p>
+        <p>@Html.ValidationMessageFor(model => model.ConfirmPass)</p>
+
+        <input type="submit" value="Đăng Kí" class="btn btn-success" style="box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),
+    0 6px 20px 0 rgba(0,0,0,0.19);" />
+
+
+
+    }
+</div>

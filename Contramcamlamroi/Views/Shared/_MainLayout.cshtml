@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script src="~/Scripts/script.js"></script>
+
+    <style>
+
+        article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+            display: flex;
+        }
+
+        .col-md-10 {
+            width: 50%;
+        }
+
+        .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-10, .col-md-9, .col-md-11, .col-md-12 {
+            float: left;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .col-md-2 {
+            width: 15%;
+            margin-left: 8%;
+        }
+
+        body {
+            padding-top: 0;
+        }
+
+        .navbar-inverse .navbar-nav > li > a {
+            font-size: 17px;
+            color: green;
+            font-weight: 700;
+        }
+
+        .navbar-inverse {
+            display: block;
+            position: fixed;
+            background-color: white;
+            border: 1px solid white;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            transition: top 0.3s;
+        }
+
+            .navbar-inverse .navbar-nav > li > a:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                display: inline-block;
+                height: 1em;
+                width: 100%;
+                border-bottom: 2px solid orange;
+                margin-top: 10px;
+                opacity: 0;
+                -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+                transition: opacity 0.35s, transform 0.35s;
+                -webkit-transform: scale(0,1);
+                transform: scale(0,1);
+            }
+
+            .navbar-inverse .navbar-nav > li > a:hover:after {
+                opacity: 1;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+
+            .navbar-inverse .navbar-nav > li > a:hover {
+                color: orange;
+            }
+    </style>
+</head>
+<body>
+
+
+
+    <div class="row">
+        <div class="col-md-12" style="margin-left:10%;">
+
+        </div>
+        <div class="col-md-2" style="margin-left:10%;">
+
+        </div>
+
+        <div class="col-md-10" id="div-content" style="margin-left:2%;">
+            <div class="slideshow-container">
+
+            </div>
+
+
+        </div>
+    </div>
+    @RenderBody()
+
+    @*@<footer style=" background-color: forestgreen;">
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>*@
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

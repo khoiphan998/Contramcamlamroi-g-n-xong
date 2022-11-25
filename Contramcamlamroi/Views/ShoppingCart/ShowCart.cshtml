@@ -1,0 +1,89 @@
+﻿@model Contramcamlamroi.Models.Cart
+
+@{ ViewBag.Title = "ShowCart";
+                Layout = "~/Views/Shared/_ShowCartLayout.cshtml"; }
+<style>
+    input[type="text"i] {
+        height: 30px;
+        padding: 1px 2px;
+        margin-top: 10px;
+        border-radius: 5px;
+        border: 2px solid #73AD21;
+    }
+   
+</style>
+<div style="margin-top:10%">
+    <h2>Giỏ Hàng</h2>
+    <a href="@Url.Action("Index_Product","Product")">Tiếp tục mua hàng</a>
+    @if (Model != null)
+    {
+<table class="table">
+    <thead>
+        <tr>
+            <th style="text-align:center">Tên Sản Phẩm</th>
+            <th style="text-align:center">Hình Sản Phẩm</th>
+            <th style="text-align:center">Giá</th>
+            <th style="text-align:center">Số lượng</th>
+            <th style="text-align:center">Thành tiền</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+            decimal total = item._quantity * (decimal)item._product.Price.Value;
+<tr>
+    <td>@Html.DisplayFor(model => item._product.NamePro)</td>
+    <td><img src="@Url.Content(item._product.ImagePro)" height="50" width="50" /></td>
+    <td>@Html.DisplayFor(model => item._product.Price)0 VNĐ </td>
+    <td>
+        @using (Html.BeginForm("Update_Cart_quantity", "ShoppingCart"))
+        {
+<input type="hidden" value="@item._product.ProductID" name="idPro" />
+                        <input type="number" value="@item._quantity " name="cartQuantity" />
+                                                <input type="submit" value="Cập Nhập" />}
+    </td>
+    <td>@total VNĐ</td>
+    <td>
+        <a href="/ShoppingCart/RemoveCart/@item._product.ProductID">Xóa</a>
+    </td>
+
+</tr>                }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="6" style="text-align:right;font-size:30px;font-weight:600">Tổng Tiền: <span style="color:red;">
+                @Model.Total_money() VNĐ</span>
+        </tr>
+        <tr>
+            <td></td>
+            <td colspan="3" style="border-top:1px solid black">
+                @using (Html.BeginForm("CheckOut", "ShoppingCart"))
+                {
+                <table style="border-collapse:separate;border-spacing:5px;">
+                    @*<tr>
+                <td> Mã Khách Hàng </td>
+                <td> <input type="number" name="CodeCustomer" required/></td>
+            </tr>*@
+                    <tr>
+                        <td> Mã Khách Hàng: </td>
+                        <td> <input type="number" name="CodeCustomer" required /></td>
+                    </tr>
+                    <tr>
+                        <td> Địa chỉ :</td>
+                        <td><input type="text" name="AddressDelivery" required /></td>
+
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Đặt Hàng" class="btn btn-success" />
+                            <a href="@Url.Action("Create", "Customer")" class="btn btn-success"> Register</a>
+                        </td>
+                    </tr>
+                </table>}
+            </td>
+        </tr>
+    </tfoot>
+</table>}
+</div>

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Contramcamlamroi.Models.Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/ViewPage1.cshtml";
+}
+<h2 style="padding:10px;">DANH MỤC SẢN PHẨM </h2>
+<p style="padding:10px; font-size:20px;">
+    @Html.ActionLink("Thêm sản phẩm mới", "Create")
+</p>
+
+<div style="padding-left:12px;margin-top: -7px;margin-bottom: 15px;">
+
+        @using (Html.BeginForm("Index", "Categories", FormMethod.Get))
+        {
+            <input type="text" name="_name" />
+            <input type="submit" value="Search" />
+        }
+</div>
+<table class="table table-bordered" style=" border-width:thick ;margin:10px;">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDCate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameCate)
+        </th>
+       
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDCate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameCate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })|
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+
+
+
+
+

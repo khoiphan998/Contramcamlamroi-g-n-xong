@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "~/Views/Shared/_ShowCartLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Đặt Hang Thành Công</title>
+</head>
+<body style="text-align:center;margin-top:10%">
+    <h2> Đơn Hàng Của Bạn Đã Được Xác Nhận</h2>
+    <h4> Đơn hàng sẽ được vận chuyển đến bạn trong khoản 2 - 3 ngày. Cảm ơn bạn.</h4>
+    <a href="@Url.Action("Index_Product","Product")" class="w3-btn w3-green" style="text-decoration:none;">
+    Tiếp Tục Mua Hàng</a>
+</body>
+</html>
