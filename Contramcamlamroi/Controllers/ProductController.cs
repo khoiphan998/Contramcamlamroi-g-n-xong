@@ -72,9 +72,10 @@ namespace Contramcamlamroi.Controllers
                     pro.ImagePro = "~/Content/images/" + filename;
                     pro.UploadImage.SaveAs(Path.Combine(Server.MapPath("~/Content/images/"), filename));
                 }
+                ViewBag.listCategory = new SelectList(list, "IDCate", "NameCate", 1);
                 database.Products.Add(pro);
                 database.SaveChanges();
-                return RedirectToAction("Index_Admin","Product");
+                return RedirectToAction("Index_Admin");
             }
             catch
             {

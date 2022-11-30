@@ -302,13 +302,17 @@
     <Content Include="Views\Shared\_MainLayout.cshtml" />
     <Content Include="Views\Shared\_ShowCartLayout.cshtml" />
     <Content Include="Views\ShoppingCart\CheckOut_Success.cshtml" />
-    <Content Include="Views\Product\Home.cshtml" />
     <Content Include="Views\Product\Index_Product.cshtml" />
     <Content Include="Views\OrderDetail\GroupByTop.cshtml" />
     <Content Include="Views\OrderDetail\GroupByNew.cshtml" />
     <Content Include="Views\LoginUser\LoginAcount.cshtml" />
     <Content Include="Views\Customer\Delete.cshtml" />
     <Content Include="Views\Customer\Details.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\OrderPro\Details.cshtml" />
+    <Content Include="Views\OrderPro\Edit.cshtml" />
+    <Content Include="Views\OrderPro\Delete.cshtml" />
+    <Content Include="Views\OrderDetail\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,18 +1,16 @@
 ﻿@model Contramcamlamroi.Models.Product
 
-@{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/ViewPage1.cshtml";
-}
+@{ ViewBag.Title = "Details";
+                Layout = "~/Views/Shared/ViewPage1.cshtml"; }
 
-<h2>Details</h2>
+<h2>Chi tiết sản phẩm</h2>
 
 <div>
-    <h4>Product</h4>
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.NamePro)
+            Tên sản phẩm
         </dt>
 
         <dd>
@@ -20,7 +18,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DecriptionPro)
+            Chi tiết
         </dt>
 
         <dd>
@@ -28,7 +26,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Category)
+            Loại
         </dt>
 
         <dd>
@@ -36,7 +34,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Price)
+            Giá
         </dt>
 
         <dd>
@@ -44,25 +42,21 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ImagePro)
+            Hình ảnh
         </dt>
 
         <dd>
-
-            @Html.DisplayFor(model => model.ImagePro)
+            <img src="@Url.Content(Model.ImagePro)" height="150" width="150" />
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
+
+
 
     </dl>
 </div>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
-    @Html.ActionLink("Back to List", "Index")
+
+    @Html.ActionLink("Quay về", "List", "Product")
 </p>

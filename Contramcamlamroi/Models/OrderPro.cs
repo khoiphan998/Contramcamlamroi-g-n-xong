@@ -11,6 +11,8 @@ namespace Contramcamlamroi.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Web.Mvc;
 
     public partial class OrderPro
     {
@@ -20,12 +22,16 @@ namespace Contramcamlamroi.Models
         }
 
         public int ID { get; set; }
+        
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> DateOrder { get; set; }
         public Nullable<int> IDCus { get; set; }
         public string AddressDeliverry { get; set; }
 
         public virtual Customer Customer { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ViewModel Product { get; set; }
         public string NameCus { get; set; }
         public string NamePro { get; set; }
 

@@ -29,20 +29,46 @@ namespace Contramcamlamroi.Controllers
             {
                 db.Customers.Add(cus);
                 db.SaveChanges();
-                return RedirectToAction("Index_Admin");
+                return RedirectToAction("Index");
             }
             catch
             {
-                return Content("Error Craete New");
+                return View();
             }
         }
-        public ActionResult Delete()
+        public ActionResult Edit(int id)
         {
-            return View();
+            return View(db.Customers.Where(s => s.IDCus == id).FirstOrDefault());
         }
-        public ActionResult Details()
+        [HttpPost]
+        public ActionResult Edit(int id, Customer name)
         {
-            return View();
+            db.Entry(name).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult Delete(int id)
+        {
+            return View(db.Customers.Where(s => s.IDCus == id).FirstOrDefault());
+        }
+        [HttpPost]
+        public ActionResult Delete(int id, Customer cate)
+        {
+            try
+            {
+                cate = db.Customers.Where(s => s.IDCus == id).FirstOrDefault();
+                object p = db.Customers.Remove(cate);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return Content("This data is using in other table, Error Delete!");
+            }
+        }
+        public ActionResult Details(int id)
+        {
+            return View(db.Customers.Where(s => s.IDCus == id).FirstOrDefault());
         }
     }
 }

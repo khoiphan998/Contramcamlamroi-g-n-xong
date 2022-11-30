@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Contramcamlamroi.Models;
 
 namespace Contramcamlamroi.Controllers
@@ -22,7 +23,12 @@ namespace Contramcamlamroi.Controllers
             {
                 var check = db.AdminUsers.
                     Where(s => s.NameUser == _user.NameUser && s.PasswordUser == _user.PasswordUser).FirstOrDefault();
-                if (check == null)
+            if (Membership.ValidateUser(_user.NameUser, _user.PasswordUser))
+            {
+                ModelState.AddModelError(string.Empty, "The user name or password is incorrect");
+                return View("LoginAdmin");
+            }
+            if (check == null)
                 {
                     ViewBag.ErrorInfo = "Sai Infor";
                     return View("Index");
@@ -44,8 +50,10 @@ namespace Contramcamlamroi.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                   
                     var check_ID = db.AdminUsers.Where(s => s.ID == _user.ID).FirstOrDefault();
-                    if (check_ID == null)
+                var check_NameUser = db.AdminUsers.Where(s => s.NameUser == _user.NameUser).FirstOrDefault();
+                if (check_ID  == null)
                     {
                         db.Configuration.ValidateOnSaveEnabled = false;
                         db.AdminUsers.Add(_user);
@@ -54,14 +62,17 @@ namespace Contramcamlamroi.Controllers
                     }
                     else
                     {
-                        ViewBag.ErrorRegister = "This ID is exixst";
-                        return View();
+                    ViewBag.ErrorRegister = "ID đã được tạo ";
+                    ViewBag.ErrorRegister = "Tên tài khoản đã được tạo ";
+                    return View();
                     }
 
                 }
                 return View();
             }
-            public ActionResult LogOutUser()
+       
+
+        public ActionResult LogOutUser()
             {
                 Session.Abandon();
                 return RedirectToAction("Index", "LoginUser");

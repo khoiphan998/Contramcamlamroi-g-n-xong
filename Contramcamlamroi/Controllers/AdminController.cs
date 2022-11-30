@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Contramcamlamroi.Models;
 
 namespace Contramcamlamroi.Controllers
@@ -21,10 +22,16 @@ namespace Contramcamlamroi.Controllers
         {
             var check = db.AdminUsers
                 .Where(s => s.NameUser == _user.NameUser && s.PasswordUser == _user.PasswordUser).FirstOrDefault();
+            if (Membership.ValidateUser(_user.NameUser, _user.PasswordUser))
+            {
+                ModelState.AddModelError(string.Empty, "The user name or password is incorrect");
+                return View("LoginAdmin");
+            }
             if (check == null) //login sai thong tin
             {
                 ViewBag.ErrorInfo = "Sai Infor";
                 return View("LoginAdmin");
+               
             }
             else
             {
@@ -34,6 +41,7 @@ namespace Contramcamlamroi.Controllers
                 return RedirectToAction("Index_Admin", "Product");
 
             }
+
         }
         public ActionResult LogOutUser()
         {

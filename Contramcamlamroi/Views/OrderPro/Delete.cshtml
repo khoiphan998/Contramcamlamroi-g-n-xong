@@ -1,19 +1,25 @@
-﻿@model Contramcamlamroi.Models.Customer
+﻿@model Contramcamlamroi.Models.OrderPro
 
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/ViewPage1.cshtml";
 }
 
-<h2>Xóa khách hàng</h2>
-
-<h3>Bạn có chắc muốn xóa khách hàng này chứ ?</h3>
+<h3>Bạn có chắc muốn xóa đơn hàng này chứ ?</h3>
 <div>
-
+    <h4>Xóa</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Mã khách hàng
+            Thời gian đặt
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOrder)
+        </dd>
+
+        <dt>
+            Mã KH
         </dt>
 
         <dd>
@@ -21,27 +27,19 @@
         </dd>
 
         <dt>
-            Tên khách hàng
+            Địa chỉ
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NameCus)
+            @Html.DisplayFor(model => model.AddressDeliverry)
         </dd>
 
         <dt>
-            Số điện thoại
+            Tên KH
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PhoneCus)
-        </dd>
-
-        <dt>
-            E-mail khách hàng
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmailCus)
+            @Html.DisplayFor(model => model.Customer.NameCus)
         </dd>
 
     </dl>

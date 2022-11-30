@@ -23,10 +23,11 @@ namespace Contramcamlamroi.Models
         [Required(ErrorMessage = "Tên đăng nhập không được trống!")]
         [Display(Name = "Tên Tài Khoản")]
         public string NameUser { get; set; }
+
         [DisplayName("Vị Trí")]
         public string RoleUser { get; set; }
         [DisplayName("Nhập mật khẩu")]
-        [Required(ErrorMessage = "Mật khẩu không được trống!")]
+        [Required(ErrorMessage = "Mật khẩu không được trống!")]  
         public string PasswordUser { get; set; }
         [NotMapped]
         [Compare("PasswordUser")]

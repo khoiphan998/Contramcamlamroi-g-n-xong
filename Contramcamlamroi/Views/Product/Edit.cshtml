@@ -1,24 +1,26 @@
 ﻿@model Contramcamlamroi.Models.Product
 
-@{
-    ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/ViewPage1.cshtml";
-}
+@{ ViewBag.Title = "Edit";
+                Layout = "~/Views/Shared/ViewPage1.cshtml"; }
 
-<h2>Edit</h2>
+<h2 style="text-align:center">Sửa sản phẩm</h2>
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Product</h4>
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ProductID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NamePro, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2">
+                Tên sản phẩm
+            </div>
+
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NamePro, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NamePro, "", new { @class = "text-danger" })
@@ -26,7 +28,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DecriptionPro, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2">
+                Chi tiết
+            </div>
+
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DecriptionPro, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DecriptionPro, "", new { @class = "text-danger" })
@@ -34,33 +39,40 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2">
+                Loại
+            </div>
+
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
             </div>
         </div>
 
+
+
         <div class="form-group">
-            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2">
+                Hình ảnh
+            </div>
+
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                @*<input type="file" name="UploadImage" />*@
+
+                @Html.EditorFor(model => model.ImagePro, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ImagePro, "", new { @class = "text-danger" })
+
+
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ImagePro, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ImagePro, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ImagePro, "", new { @class = "text-danger" })
-                <img src="@Url.Content(Model.ImagePro)" height="150" width="150" />
-                <input type="file" name="UploadImage" onchange="ChangeImage(this, document.getElementById('previewImg'))" />  
-            </div>  
-        </div>
+
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="control-label col-md-2">
+                Số lượng
+            </div>
+
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
@@ -69,12 +81,17 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+
+                <input type="submit" value="Cập nhật" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Quay lại", "List", "Product")
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

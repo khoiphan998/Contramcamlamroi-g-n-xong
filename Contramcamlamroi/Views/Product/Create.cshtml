@@ -3,49 +3,54 @@
 
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
+<div style="margin-top:10%">
+    <h2 style="text-align:center">THÊM SẢN PHẨM MỚI</h2>
+    <div style="padding-left:40%">
 
-<h2>THÊM MỚI SẢN PHẨM</h2>
-@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    <table class="table-bordered" style="text-align:center;" >
-        <tr>
-            <td>@Html.LabelFor(model => model.NamePro)</td>
-            <td>@Html.EditorFor(model => model.NamePro)</td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(model => model.Price)</td>
-            <td>@Html.EditorFor(model => model.Price)</td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(model => model.Category)</td>
-            
-            <td>
-                @{Html.RenderAction("SelectCate", "Product");
-                }
-                @*{Html.RenderAction(“action_name”,”controller_name”); }*@
-                @* @Html.DropDownListFor(model =>model.Category,(SelectList)ViewBag.ListCate)*@
+        @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+<table class="table-bordered" style="padding:10px; ">
+    <tr>
+        <td>
+            @*@Html.LabelFor(model => model.NamePro)*@
+            Tên sản phẩm
+        </td>
+        <td>@Html.EditorFor(model => model.NamePro)</td>
+    </tr>
+    <tr>
+        <td>Giá</td>
+        <td>@Html.EditorFor(model => model.Price)</td>
+    </tr>
 
-            </td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(model => model.DecriptionPro)</td>
-            <td>@Html.EditorFor(model => model.DecriptionPro)</td>
-        </tr>
-        <tr>
-            <td>@Html.LabelFor(model => model.ImagePro)</td>
-            <td><img src="@Url.Content(Model.ImagePro)" height="150" width="150" id="previewImg" />
-            
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="file" name="UploadImage" onchange="ChangeImage(this, document.getElementById('previewImg'))" />
-                <input type="submit" value="Tạo mới" />
-            </td>
-        </tr>
-    </table>
-}
+    <tr>
+        <td>Loại sản phẩm</td>
+        <td>
+            @*@{Html.RenderAction("SelectCate", "Product"); }*@
+            @*@{Html.RenderAction("action_name", "controller_name"); }*@
+            @Html.DropDownListFor(model => model.Category, (SelectList)ViewBag.listCategory)
+        </td>
+    </tr>
 
 
+    <tr>
+        <td>Chi tiết </td>
+        <td>@Html.EditorFor(model => model.DecriptionPro)</td>
+    </tr>
+    <tr>
+        <td>Hình ảnh</td>
+        <td>
+            <img src="@Url.Content(Model.ImagePro)" height="150" width="150" id="previewImg" />
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <input type="file" name="UploadImage" onchange="ChangeImage(this, document.getElementById('previewImg'))" />
+            <input type="submit" value="Tạo mới" />
+        </td>
+    </tr>
+</table>}
+
+    </div>
+</div>

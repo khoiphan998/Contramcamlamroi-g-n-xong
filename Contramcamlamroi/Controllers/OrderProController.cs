@@ -19,5 +19,40 @@ namespace Contramcamlamroi.Controllers
                 return View(db.OrderPro.Where(s => s.NameCus.Contains(_name)).ToList());
 
         }
+        public ActionResult Details(int id)
+        {
+            return View(db.OrderPro.Where(s => s.ID == id).FirstOrDefault());
+        }
+        public ActionResult Edit(int id)
+        {
+            return View(db.OrderPro.Where(s => s.ID == id).FirstOrDefault());
+        }
+        [HttpPost]
+        public ActionResult Edit(int id, OrderPro cate)
+        {
+            db.Entry(cate).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult Delete(int id)
+        {
+            return View(db.OrderPro.Where(s => s.ID == id).FirstOrDefault());
+        }
+        [HttpPost]
+        public ActionResult Delete(int id, OrderPro cate)
+        {
+            try
+            {
+                cate = db.OrderPro.Where(s => s.ID == id).FirstOrDefault();
+                db.OrderPro.Remove(cate);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return Content("This data is using in other table, Error Delete!");
+            }
+        }
     }
+    
 }

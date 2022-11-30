@@ -12,6 +12,7 @@ namespace Contramcamlamroi.Controllers
     {
         DBSportStoreEntities2 database = new DBSportStoreEntities2();
         // GET: OrderDetail
+
         public ActionResult GroupByTop5()
         {
             List<OrderDetail> ordersD = database.OrderDetails.ToList();

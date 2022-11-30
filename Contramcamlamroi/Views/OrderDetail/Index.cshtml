@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Contramcamlamroi.Models.ViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/ViewPage1.cshtml";
+}
+
+<h1 style="padding:10px;">ĐƠN HÀNG</h1>
+
+<p style="padding:10px; font-size:20px">
+    @Html.ActionLink("Thêm Đơn Hàng Mới ", "Create", "OrderPro")
+</p>
+<table class="table table-bordered" style="border-width: thick;  margin-left: 10px; margin-right: 10px; font-size:17px">
+    <tr>
+        <th> Ngày ĐH </th>
+        <th> Địa chỉ giao hàng  </th>
+        <th> Mã Khách Hàng </th>
+        <th> Tên Khách Hàng </th>
+
+
+
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+
+    <td> @Html.DisplayFor(modelItem => item.NamePro) </td>
+    <td>
+        @Html.ActionLink("Sửa", "Edit", new { id = item.IDPro }) |
+        @Html.ActionLink("Chi tiết", "Details", new { id = item.IDPro }) |
+        @Html.ActionLink("Xóa", "Delete", new { id = item.IDPro })
+    </td>
+</tr>
+    }
+</table>

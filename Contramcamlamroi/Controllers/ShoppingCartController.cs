@@ -13,9 +13,10 @@ namespace Contramcamlamroi.Controllers
         // GET: ShoppingCart
         public ActionResult ShowCart()
         {
-            if (Session["Cart"] == null)
-                return View("EmptyCart");
             Cart _cart = Session["Cart"] as Cart;
+            if (Session["Cart"] == null )
+                return View("EmptyCart");
+            
             return View(_cart);
         }
         public Cart GetCart()
@@ -90,8 +91,7 @@ namespace Contramcamlamroi.Controllers
         {
             Cart cart = Session["Cart"] as Cart;
             cart.Remove_CartItem(id);
-            return RedirectToAction("ShowCart", "ShoppingCart");
-
+          return RedirectToAction("ShowCart", "ShoppingCart");
         }
 
         // POST: ShoppingCart/Create

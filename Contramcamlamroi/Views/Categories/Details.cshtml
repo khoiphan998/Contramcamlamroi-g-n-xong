@@ -1,13 +1,15 @@
 ﻿@model Contramcamlamroi.Models.Category
-@{ 
+@{
     Layout = "~/Views/Shared/ViewPage1.cshtml";
 }
+<h2>Chi tiết</h2>
+
 <div>
-    <h4>Category</h4>
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.IDCate)
+            Mã loại
         </dt>
 
         <dd>
@@ -15,7 +17,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NameCate)
+            Tên loại
         </dt>
 
         <dd>
@@ -25,6 +27,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Quay lại", "Index")
 </p>
